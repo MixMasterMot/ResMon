@@ -25,5 +25,11 @@ namespace ResourceMonHost.Signal
         {
             return _infoTicker.GetInfo();
         }
+
+        public override Task OnConnected()
+        {
+            Console.WriteLine("User Connected");
+            return base.OnConnected();
+        }
     }
 }

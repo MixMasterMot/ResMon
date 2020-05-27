@@ -1,6 +1,6 @@
 ﻿$(function () {
     //Set the hubs URL for the connection "http://localhost:8080/signalr"
-    $.connection.hub.url = "http://localhost:8080/signalr";
+    $.connection.hub.url = "http://192.168.0.110:8080/signalr";
 
     // Declare a proxy to reference the hub.
     var ticker = $.connection.InfoHub;

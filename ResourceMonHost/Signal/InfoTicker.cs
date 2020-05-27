@@ -18,7 +18,9 @@ namespace ResourceMonHost.Signal
 
         private readonly object _updateInfo = new object();
 
+        // readonly
         private readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(1000);
+        // readonly
         private readonly Timer _timer;
         private volatile bool _updateingInfo = false;
 
@@ -60,5 +62,6 @@ namespace ResourceMonHost.Signal
         {
             return _info;
         }
+        
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.Owin.Hosting;
+﻿using Microsoft.AspNet.SignalR;
+using Microsoft.Owin.Hosting;
+using ResourceMonHost.Signal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +23,26 @@ namespace ResourceMonHost
             using (WebApp.Start(url))
             {
                 Console.WriteLine("Server running on {0}", url);
-                Console.ReadLine();
+
+                while (true)
+                {
+                    var cmd = Console.ReadLine().ToLower().Split(' ');
+                    if (cmd[0] == "stop")
+                    {
+                        break;
+                    }
+                    else if (cmd[0] == "update")
+                    {
+                        int interval;
+                        if(int.TryParse(cmd[1], out interval))
+                        {
+                            var context = GlobalHost.ConnectionManager.GetHubContext<InfoHub>();
+                            context.Clients.All.SetUpdateInterval(interval);
+                        }
+                    }
+                }
+                Console.WriteLine("Exiting");
+                
             }
 
         }
